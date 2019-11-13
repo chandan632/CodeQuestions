@@ -1,0 +1,40 @@
+<%- include('partials/header') -%>
+<%- include('partials/navbar') -%>
+
+<div class="container">
+    <% if(data.questions.length > 0){ %>
+    <h1 class="text-center text-white">All Questions</h1>
+    <table class="table text-center text-white">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Option1</th>
+                <th scope="col ">Option2</th>
+                <th scope="col">Option3</th>
+                <th scope="col">Option4</th>
+                <th scope="col">Answer</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.questions.forEach( question => { %>
+            <tr>
+                <td><%= question.description %></td>
+                <td><%= question.option1 %></td>
+                <td><%= question.option2 %></td>
+                <td><%= question.option3 %></td>
+                <td><%= question.option4 %></td>
+                <td><%= question.ans %></td>
+                <td id="<%= question._id %>" class="bg-primary font-italic">EDIT</td>
+                <td id="<%= question._id %>" class="bg-danger font-italic">DELETE</td>
+            </tr>
+            <% } ) %>
+        </tbody>
+    </table>
+    <% } else{ %>
+    <h1 class="text-center text-white">No Questions Available</h1>
+    <% } %>
+</div>
+
+<%- include('partials/footer') -%>

@@ -1,0 +1,56 @@
+<%- include('partials/header') -%>
+<%- include('partials/navbar') -%>
+
+<div class="container">
+    <h1 class="text-center text-white">Add Question</h1>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form class="addquestionform mb-5">
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control" placeholder="Questions..." name="description"
+                        id="description">
+                    <small style="color: red">* required</small>
+                </div>
+                <div class="form-group">
+                    <label for="option1">Option1</label>
+                    <input type="text" class="form-control" placeholder="Option1..." name="option1" id="option1">
+                    <small style="color: red">* required</small>
+                </div>
+                <div class="form-group">
+                    <label for="option2">Option2</label>
+                    <input type="text" class="form-control" placeholder="Option2..." name="option2" id="option2">
+                    <small style="color: red">* required</small>
+                </div>
+                <div class="form-group">
+                    <label for="option3">Option3</label>
+                    <input type="text" class="form-control" placeholder="Option3..." name="option3" id="option3">
+                    <small style="color: red">* required</small>
+                </div>
+                <div class="form-group">
+                    <label for="option4">Option4</label>
+                    <input type="text" class="form-control" placeholder="Option4..." name="option4" id="option4">
+                    <small style="color: red">* required</small>
+                </div>
+                <div class="form-group">
+                    <label for="ans">Correct Ans.</label>
+                    <select name="ans" id="ans" class="w-100 p-1 rounded-lg">
+                        <option value="Option1">Option1</option>
+                        <option value="Option2">Option2</option>
+                        <option value="Option3">Option3</option>
+                        <option value="Option4">Option4</option>
+                    </select>
+                    <small style="color: red">* required</small>
+                </div>
+                <input type="submit" value="Add Question" class="btn btn-success px-2 py-1">
+                <div class="msg text-white p-1 w-50 float-right rounded-lg"></div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+</div>
+
+<script src="js/script.js"></script>
+<%- include('partials/footer') -%>
