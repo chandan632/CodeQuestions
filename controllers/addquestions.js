@@ -2,7 +2,15 @@ const express = require("express")
 const router = express.Router()
 const Question = require("../models/question")
 
-router.post("/addquestions", async (req, res) => {
+const checkLogin = (req, res, next) => {
+    if (req.session.email == 'admin@gmail.com' && req.session.name == 'Admin') {
+        next()
+    } else {
+        res.redirect('/login')
+    }
+}
+
+router.post("/addquestions", checkLogin, async (req, res) => {
     try {
         const question = new Question(req.body)
         await question.save()

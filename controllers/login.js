@@ -12,7 +12,17 @@ router.use(session({
     }
 }))
 
-router.get("/login", (req, res) => {
+const checkLogin = (req, res, next) => {
+    if (req.session.email == undefined) {
+        next()
+    } else if (req.session.email == 'admin@gmail.com' && req.session.name == 'Admin') {
+        res.redirect('/')
+    } else if (req.session.email != 'admin@gmail.com' && req.session.email != undefined) {
+        res.redirect('/test')
+    }
+}
+
+router.get("/login", checkLogin, (req, res) => {
     const data = {
         title: "Login and Signup"
     }
@@ -23,13 +33,19 @@ router.post("/login", async (req, res) => {
     try {
         const email = req.body.login_email
         const password = req.body.login_password
-        const user = await User.findOne({ email, password })
-        if (!user) {
-            res.redirect("/login")
+        if (email == "admin@gmail.com" && password == "admin@123") {
+            req.session.email = "admin@gmail.com"
+            req.session.name = "Admin"
+            res.redirect("/")
         } else {
-            req.session.email = email
-            req.session.name = user.name
-            res.redirect("/attemptest")
+            const user = await User.findOne({ email, password })
+            if (!user) {
+                res.redirect("/login")
+            } else {
+                req.session.email = email
+                req.session.name = user.name
+                res.redirect("/attemptest")
+            }
         }
     } catch (err) {
         console.log(err)

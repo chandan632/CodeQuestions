@@ -1,7 +1,7 @@
-const express = require("express")
+const express = require('express')
 const session = require('express-session')
 const router = express.Router()
-const Question = require("./../models/question")
+const User = require('./../models/user')
 
 router.use(session({
     secret: "djhvduviduvbsdbsdiuvbuydsvsaubishiudgfyudfvyudhvc",
@@ -20,16 +20,15 @@ const checkLogin = (req, res, next) => {
     }
 }
 
-router.get("/questions", checkLogin, async (req, res) => {
+router.get('/users', checkLogin, async (req, res) => {
     try {
-        const questions = await Question.find()
+        const users = await User.find()
         const data = {
-            title: "All Questions",
-            questions,
+            title: 'Users',
+            users,
             name: req.session.name
         }
-        // console.log(questions)
-        res.render("questions", { data })
+        res.render('users', { data })
     } catch (err) {
         console.log(err)
     }

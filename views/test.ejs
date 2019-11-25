@@ -15,7 +15,10 @@
 <body>
     <div class="container">
         <% if(data.name){ %>
-        <div class="text-white w-100 bg-dark p-2 text-center mb-2">Welcome <%= data.name %></div>
+        <div class="text-white w-100 bg-dark p-2 text-center mb-2">
+            Welcome <%= data.name %>
+            <a href="/logout" class="btn btn-danger py-2 px-1 ml-2">Logout</a>
+        </div>
 
         <% data.questions.forEach(question => { %>
         <form action="" class="quizform" id="<%= question._id %>">
@@ -37,13 +40,14 @@
             </div>
         </form>
         <% }) %>
-
-
+        <a href="testdone" class="btn btn-warning py-1 px-2 text-center">I am done with test</a>
         <% } else { %>
-        <h1 class="text-white">Wellcome to CodeQuestions</h1>
-        <h4 class="text-white">Login to access Test</h4>
-        <a href="/login"> <button class="btn btn-warning text-white py-1 px-2">Login</button></a>
-        <a href="/signup"><button class="btn btn-warning text-white py-1 px-2">Sign Up</button></a>
+        <div class="text-center">
+            <h1 class="text-white">Wellcome to CodeQuestions</h1>
+            <h4 class="text-white">Login to access Test</h4>
+            <a href="/login"> <button class="btn btn-warning text-white py-1 px-2">Login</button></a>
+            <a href="/signup"><button class="btn btn-warning text-white py-1 px-2">Sign Up</button></a>
+        </div>
         <% } %>
     </div>
     <script src="js/test.js"></script>

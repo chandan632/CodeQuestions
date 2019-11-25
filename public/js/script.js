@@ -57,6 +57,7 @@ addquestionform.addEventListener("submit", e => {
             success: function (response) {
                 if (response.trim() == "Question Added") {
                     showmsg("bg-success", msgbox, response)
+                    e.target.reset()
                 } else {
                     showmsg("bg-danger", msgbox, response)
                 }

@@ -12,14 +12,26 @@
             <li class="nav-item">
                 <a class="nav-link text-white mx-2" href="/questions">Questions</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-white mx-2" href="/users">users</a>
+            </li>
         </ul>
         <ul class="navbar-nav">
+            <% if(!data.name){ %>
             <li class="nav-item">
                 <a class="nav-link text-white mx-2" href="/login">Login</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white mx-2" href="/signup">Signup</a>
             </li>
+            <% } else{ %>
+            <li class="nav-item">
+                <a class="nav-link text-white mx-2" href="#"><%= data.name %></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white mx-2" href="/logout">Logout</a>
+            </li>
+            <% } %>
         </ul>
     </div>
 </nav>

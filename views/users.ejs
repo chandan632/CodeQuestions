@@ -1,0 +1,28 @@
+<%- include('partials/header.ejs') -%>
+<%- include('partials/navbar.ejs') -%>
+
+<div class="container text-center text-white">
+    <h1>List Of All Users</h1>
+    <table class="table text-center text-white">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">TestDone</th>
+                <th scope="col">Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.users.forEach( user => { %>
+            <tr>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.testDone %></td>
+                <td><%= user.score %></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include('partials/footer.ejs') -%>

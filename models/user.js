@@ -24,6 +24,17 @@ const schema = mongoose.Schema({
         trim: true,
         minlength: 8,
         maxlength: 20
+    },
+    testDone: {
+        type: String,
+        default: 'no',
+        trim: true,
+        lowercase: true
+    },
+    score: {
+        type: Number,
+        default: 0,
+        trim: true
     }
 })
 
